@@ -8,7 +8,7 @@ use tokio::net::{TcpListener, TcpStream};
 
 #[tokio::main]
 async fn main() {
-    let listener = TcpListener::bind("0.0.0.0:1234").await.unwrap();
+    let listener = TcpListener::bind("0:1234").await.unwrap();
 
     let db = Arc::new(Mutex::new(HashMap::new()));
     println!("Listening");
