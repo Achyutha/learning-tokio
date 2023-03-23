@@ -8,10 +8,11 @@ use tokio::net::{TcpListener, TcpStream};
 
 #[tokio::main]
 async fn main() {
-    let listener = TcpListener::bind("0:1234").await.unwrap();
+    let port = 1234;
+    let listener = TcpListener::bind(format!("0:{}", port)).await.unwrap();
 
     let db = Arc::new(Mutex::new(HashMap::new()));
-    println!("Listening");
+    println!("Listening on port:{}", port);
 
     loop {
         let (socket, _) = listener.accept().await.unwrap();
